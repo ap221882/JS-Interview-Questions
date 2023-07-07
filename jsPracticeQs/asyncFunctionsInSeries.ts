@@ -10,7 +10,7 @@ async function apiFetch(index: number) {
 }
 
 const asyncTask = function (i: number) {
-  // console.log("running asyncTask", i);
+  console.log("running asyncTask", i);
 
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve(`Completing ${i}`), 100 * i);
@@ -39,4 +39,13 @@ const executeAsyncInSeries = async (
 };
 
 // executeAsyncInSeries([() => apiFetch(1), () => apiFetch(2), () => apiFetch(3)]);
-executeAsyncInSeries(promises);
+// executeAsyncInSeries(promises);
+
+//# Second way
+const executeAsyncInSeries2 = async (promises: any[]) => {
+  for (let item of promises) {
+    await item();
+  }
+};
+
+executeAsyncInSeries2(promises);
