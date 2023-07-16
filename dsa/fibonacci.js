@@ -6,4 +6,9 @@ const fib = function (n) {
   console.log(arr);
 };
 
-fib(23);
+const recursiveFib = (n) => {
+  if (n <= 1) return n;
+  return recursiveFib(n - 1) + recursiveFib(n - 2);
+};
+
+recursiveFib(2);
